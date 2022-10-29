@@ -1,25 +1,13 @@
-<%= form_with(model: group) do |form| %>
-  <% if group.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
-
-      <ul>
-        <% group.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.text_field :name, class: "input", value: '', placeholder: 'Category name' %>
-  </div>
-
-  <div class="field">
-    <%= form.text_field :icon, class: "input", value: '', placeholder: 'Icon URL (empty for default)' %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "Save", class:"button" %>
-  </div>
-<% end %>
+<%= render 'shared/nav' %>
+<div class="form">
+   <%= form_with model: @group do |f| %>
+      <div class="field">
+      <%= f.label :name, class: 'hidden' %>
+      <%= f.text_field :name, placeholder: "Name", class: "field__input" %>
+      <%= f.label :icon, class: 'hidden' %>
+      <%= f.select :icon, @icons.map { |i| [i.to_s, i.to_s] }, class: "field__icon" %>
+      </div>
+   
+      <%= f.submit 'Add new category', class: "field__btn" %>
+   <% end %>
+</div>

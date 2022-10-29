@@ -10,39 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_10_200001) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_11_152945) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "budgets", force: :cascade do |t|
-    t.string "name", default: "Transaction name"
-    t.decimal "amount", precision: 15, scale: 2, default: "0.0"
-    t.bigint "user_id", null: false
+  create_table "entities", force: :cascade do |t|
+    t.string "name"
+    t.integer "amount", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_budgets_on_user_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_entities_on_user_id"
   end
 
-  create_table "budgets_groups", id: false, force: :cascade do |t|
-    t.bigint "budget_id", null: false
+  create_table "entities_groups", force: :cascade do |t|
+    t.bigint "entity_id", null: false
     t.bigint "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["budget_id"], name: "index_budgets_groups_on_budget_id"
-    t.index ["group_id"], name: "index_budgets_groups_on_group_id"
+    t.index ["entity_id"], name: "index_entities_groups_on_entity_id"
+    t.index ["group_id"], name: "index_entities_groups_on_group_id"
   end
 
   create_table "groups", force: :cascade do |t|
-    t.string "name", default: "Category name"
-    t.string "icon", default: "https://cdn-icons-png.flaticon.com/512/94/94699.png"
-    t.bigint "user_id", null: false
+    t.string "name"
+    t.string "icon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name", default: "New user"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
@@ -54,6 +54,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_10_200001) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "budgets", "users"
+  add_foreign_key "entities", "users"
+  add_foreign_key "entities_groups", "entities"
+  add_foreign_key "entities_groups", "groups"
   add_foreign_key "groups", "users"
 end

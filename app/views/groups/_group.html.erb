@@ -1,5 +1,16 @@
-<div class="list__item">
-  <img src="<%= group.icon %>" alt="<%= group.name %> icon">
-  <p class="list__item__name"><%= group.name %></p>
-  <p>$ <%= group.total_price%></p>
-</div>
+<% @groups.each do |group|%>
+  <a href="/groups/<%= group.id %>/entities" class="group__flex">
+    <span class="group__icon">
+      <%= group.icon %>
+    </span>
+    <div class="group__item_right">
+      <span class="group__name">
+        <%= group.name %>
+      </span>
+      <span class="group__sum">
+        $ <%= group.total_amount %>
+      </span>
+    </div>
+  </a>
+<% end %>
+

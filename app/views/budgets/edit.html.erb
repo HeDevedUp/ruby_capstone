@@ -1,9 +1,0 @@
-<section>
-  <header>
-     <%= render "shared/back_button", path: group_path(@group) %>
-    <h1>Delete transaction</h1>
-  </header>
-
-  <%= button_to "Delete transaction (it will be removed from all categories)", group_budget_url(@group, @budget), method: :delete, class: 'button danger' %>
-</section>
-
