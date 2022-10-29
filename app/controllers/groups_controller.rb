@@ -1,14 +1,10 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: %i[show edit update destroy]
   before_action :authenticate_user!
+  before_action :set_group, only: %i[show edit update destroy]
 
   # GET /groups or /groups.json
   def index
-    @groups = Group.where(user: current_user)
-    @total_amount = 0.0
-    @groups.each do |group|
-      @total_amount += group.amount
-    end
+    @groups = current_user.groups
   end
 
   # GET /groups/1 or /groups/1.json
@@ -26,7 +22,8 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.user = current_user
-    @group.icon = params[:icon]
+    @group.icon = 'https://cdn-icons-png.flaticon.com/512/94/94699.png' if @group.icon == ''
+
     respond_to do |format|
       if @group.save
         format.html { redirect_to groups_path, notice: 'Category was successfully created.' }
@@ -70,6 +67,6 @@ class GroupsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def group_params
-    params.require(:group).permit(:name)
+    params.require(:group).permit(:name, :user, :icon)
   end
 end
