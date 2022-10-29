@@ -1,117 +1,78 @@
-# Budget Managment App
+# Budget app
 
-> This app is about building a mobile web application where you can manage your budget: you have a list of transactions associated with a category, so that you can see how much money you spent and on what.
-
-## Features
-
-- Register and log in, so that the data is private to the user.
-- Introduce new transactions associated with a category.
-- See the money spent on each category.
+Budget app is about building a mobile web application where you can manage your budget: you have a list of transactions associated with a category, so that you can see how much money you spent and on what.
 
 ## Built With
 
-- Ruby on Rails
-- Devise for authentication
-- PostgreSQL
-- Tailwind css
-- Rspec test
+- Ruby -v 3.0.2
+- Rails -v 7.0.4
+- gem 'rspec'
+- gem 'sass-rails'
 
-## Live demo
+### Presentation
 
-https://rocky-dusk-21313.herokuapp.com/
+### Live
 
-# Getting Started
+[budgetapp](https://budget-app-arnaud.herokuapp.com/)
 
-### Prerequisites
+### Getting Started
 
-- Ruby ruby-3.1.2 installed
-- PostgreSQL DBMS running
+To get a local copy up and running follow these simple steps:
 
-### Setup
+#### Prerequisites
 
-- Open your terminal and navigate to the folder you would like to save the project.type the following commands to your terminal
+- Ruby -v 3.0.2
+- Rails -v 7.0.4
+- Postgresql
 
-```bash
-git clone git@github.com:darikmohammed/Budget-Managment-app.git
+#### Setup
+
+- Open the terminal and run the following commands:
+
 ```
-
-```bash
-cd Budget-Managment-app && bundle install
-```
-
-**_before running the project we have to setup our databses_**
-
-<hr>
-
-1. Set databased name and password in database.yml
-
-2. Or Set `.env` file contains environment variables needed to get the Database up and running.
-
-- `.env.local` file you can use as a guide to configuring your own. Type the following commands into the terminal (or Git Bash, if using Windows) to create your `.env` file:
-
-```bash
-cp .env.local .env
-```
-
-```bash
-rails secret
-```
-
-- Set your variables at .env
-
-```env
-    DATABASE_HOST
-    DATABASE_USER
-    DATABASE_PASSWORD
-```
-
-### Then bootup your database by running the following command
-
-```shell
-rails db:reset
+- git clone git@https://github.com/HeDevedUp/ruby_capstone.git
+- rails new . --database=postgresql -T
+- cd budget_app
 
 ```
 
-### Run application
+- Run the application on the server using this command
 
-```rb
-rails server
+`rails s`
 
-```
+- Run the test using this following command:
 
-- Open your web browser at [http://127.0.0.1:3000/](http://127.0.0.1:3000/)
+`
+- rspec spec/models
+- rspec spec/system
+- rspec spec/request`
 
-### Testing
+#### Author
 
-```
-rspec
+*Jesse Tochukwu*
 
-```
+- Github: [Jesse Tochukwu ](https://github.com/hedevedup)
+- Linkedin: [Jesse Tochukwu](https://www.linkedin.com/in/JesseTochukwu/)
+- Twitter: [@devtochi](https://twitter.com/devtochi)
 
-## Authors
-
-👤 **Darik Mohammed**
-
-- GitHub: [@githubhandle](https://github.com/hedevedup)
-- Twitter: [@twitterhandle](https://twitter.com/devtochi)
-- LinkedIn: [uzoma](https://www.linkedin.com/in/je/)
-
-## 🤝 Contributing
+#### Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/hedevedup/budget_app/issues).
 
-## Show your support
+#### Show your support
 
-Give a ⭐️ if you like this project!
+Give a star if you like this project!
 
-## Acknowledgments
+#### Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+[Microverse](https://www.microverse.org/) for the motivation.
 
-## 📝 License
+Original design idea by [Gregoire Vella on Behance](https://www.behance.net/gregoirevella).
 
-This project is [MIT](./MIT.md) licensed.
+The [Creative Commons license](https://creativecommons.org/licenses/by-nc/4.0/) of the design requires that you give appropriate credit to the author.
+
+#### License
+
+This project is [MIT](https://www.mit.edu/about/) licensed.
